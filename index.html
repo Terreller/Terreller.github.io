@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            width: 150px;
+            height: 80px;
+            font-size: 25px;
+            color: pink;
+            text-align: center;
+            line-height:80px;
+            border:1px solid black;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<p></p>
+<a href="javascript:">看不清,换一张</a>
+<script>
+    var p = document.querySelector("p");
+    var a = document.querySelector("a");
+    var arr = [];
+
+
+    function getArr() {
+        for(var j = 0; j<=9 ; j++){
+            arr.push(j);
+        }
+        for(var i = 65; i<91 ;i++){
+            var num = String.fromCharCode(i);
+            arr.push(num);
+        }
+        for(var l = 97; l<123 ;l++){
+            var num2 = String.fromCharCode(l);
+            arr.push(num2);
+        }
+        return arr;
+    }
+
+    function text() {
+        var arr2 = [];
+        for(var i =0 ; i< 6; i++){
+            var x = randomNumber(0,getArr().length-1);
+            arr2.push(getArr()[x]);
+        }
+        return arr2;
+    }
+
+    a.onclick = function () {
+        var mmm = text();
+        var mm = mmm.join(" ");
+        p.innerHTML = mm;
+    }
+
+
+    function randomNumber(n,m) {
+        return parseInt(Math.random()*(m+1-n)+n);
+    }
+</script>
+</body>
+</html>
